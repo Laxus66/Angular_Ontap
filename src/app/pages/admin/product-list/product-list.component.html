@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col-2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td scope="row">{{product.id}}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ getCategoryName(product.cate_id) }}</td>
+            <td>
+                <a [routerLink]="[product.id, 'update']">
+                    <button class="btn btn-primary">Edit</button>
+                </a>
+                <button class="btn btn-danger" (click)="removeItem(product.id, product.name)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

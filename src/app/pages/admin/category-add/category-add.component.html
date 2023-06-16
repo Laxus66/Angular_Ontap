@@ -1,0 +1,7 @@
+<form (ngSubmit)="onHandleSubmit(categories.name)">
+    <div class="mb-3">
+        <label for="title">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="categories.name" id="name" name="name" />
+    </div>
+    <button class="btn btn-success" type="submit">Add</button>
+</form>

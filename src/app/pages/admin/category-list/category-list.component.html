@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col-2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <td scope="row">{{category.id}}</td>
+            <td>{{ category.name }}</td>
+            <td>
+                <a [routerLink]="[category.id, 'update']">
+                    <button class="btn btn-primary">Edit</button>
+                </a>
+                <button class="btn btn-danger" (click)="removeItem(category.id, category.name)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+<form (ngSubmit)="onHandleSubmit(product.name)">
+    <div class="mb-3">
+        <label for="title">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="product.name" id="name" name="name" />
+    </div>
+    <div class="mb-3">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" [(ngModel)]="product.price" id="price" name="price" />
+    </div>
+    <div class="mb-3">
+        <label for="category">Category:</label>
+        <select class="form-control" [(ngModel)]="product.cate_id" id="category" name="category"
+            [ngModelOptions]="{standalone: true}" (ngModelChange)="product.cate_id = $event">
+            <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.name }}</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
