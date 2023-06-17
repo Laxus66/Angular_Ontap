@@ -17,9 +17,9 @@ export class ProductAddComponent {
     cate_id: 0
   }
   categories: ICategory[] = [];
+  isSubmitted = false;
 
   constructor(
-    // private route: ActivatedRoute,
     private productService: ProductService,
     private categoryService: CategoryService,
     private router: Router
@@ -41,10 +41,30 @@ export class ProductAddComponent {
     });
   }
   onHandleSubmit(name: string) {
-    this.productService.addProduct(this.product).subscribe(product => {
-      console.log(product);
-      window.alert(`Bạn đã thêm thành công sản phẩm ${name}`)
-      this.router.navigate(['/admin/product']);
-    })
+    this.isSubmitted = true;
+    if (this.isFormValid('name') && this.isFormValid('price') && this.isFormValid('category')) {
+      this.productService.addProduct(this.product).subscribe(product => {
+        console.log(product);
+        window.alert(`Bạn đã thêm thành công sản phẩm ${name}`)
+        this.router.navigate(['/admin/product']);
+      });
+    }
   }
+
+
+  isFormValid(field: string): boolean {
+    if (field === 'name') {
+      return this.product.name.trim() !== '';
+    } else if (field === 'price') {
+      const price = this.product.price;
+      return !isNaN(Number(price)) && Number(price) > 0;
+    } else if (field === 'category') {
+      const cateId = this.product.cate_id;
+      return !isNaN(Number(cateId)) && Number(cateId) > 0;
+    }
+    return false;
+  }
+
+
+
 }

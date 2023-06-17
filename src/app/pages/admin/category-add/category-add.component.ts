@@ -12,19 +12,21 @@ export class CategoryAddComponent {
   categories: ICategory = {
     name: ''
   };
+  isSubmitted = false;
 
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router
-
   ) { }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       const CateId = +params['id'];
       this.getCategoryDetails(CateId);
     });
   }
+
   getCategoryDetails(id: number) {
     this.categoryService.getOnecategory(id).subscribe((data: any) => {
       this.categories = data;
@@ -32,10 +34,18 @@ export class CategoryAddComponent {
   }
 
   onHandleSubmit(name: string) {
-    this.categoryService.addCategory(this.categories).subscribe(categories => {
-      console.log(categories);
-      window.alert(`Bạn đã thêm thành công sản phẩm ${name}`)
-      this.router.navigate(['/admin/category']);
-    })
+    this.isSubmitted = true;
+    if (this.isFormValid()) {
+      this.categoryService.addCategory(this.categories).subscribe(categories => {
+        console.log(categories);
+        window.alert(`Bạn đã thêm thành công danh mục ${name}`)
+        this.router.navigate(['/admin/category']);
+      });
+    }
+  }
+
+  isFormValid(): boolean {
+    return this.categories.name.trim() !== '';
   }
 }
+

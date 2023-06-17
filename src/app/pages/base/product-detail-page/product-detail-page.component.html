@@ -1,1 +1,5 @@
-<p>product-detail-page works!</p>
+<div class="container text-center">
+    <h2 class="product-name">{{ product.name }}</h2>
+    <p class="product-price">{{ product.price }}</p>
+    <i class="product-category">{{ getCategoryName(product.cate_id) }}</i>
+</div>

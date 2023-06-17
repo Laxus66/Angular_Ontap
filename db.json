@@ -1,51 +1,69 @@
 {
   "products": [
     {
-      "name": "Sản phẩm C",
-      "price": 300,
+      "name": "Product A",
+      "price": 999,
       "id": 3,
-      "cate_id": 3
+      "cate_id": 5
     },
     {
-      "name": "Sản phẩm D",
+      "name": "Product B",
       "price": 123,
       "id": 4,
       "cate_id": 3
     },
     {
-      "name": "Sản phẩm E",
+      "name": "Product C",
       "price": 123,
       "id": 5,
       "cate_id": 2
     },
     {
-      "name": "sda",
+      "name": "Product D",
       "price": 3,
       "cate_id": 2,
       "id": 6
     },
     {
-      "name": "fds",
+      "name": "Product E",
       "price": 3423,
       "cate_id": 3,
       "id": 7
     },
     {
-      "name": "fds",
+      "name": "Product F",
       "price": 0,
       "cate_id": 3,
       "id": 8
+    },
+    {
+      "name": "Product G",
+      "price": 324,
+      "cate_id": 2,
+      "id": 9
     }
   ],
-  "users": [],
   "category": [
     {
       "id": 2,
-      "name": "Category 3"
+      "name": "Category 1"
     },
     {
-      "name": "sfdsf",
+      "name": "Category 2",
       "id": 3
+    },
+    {
+      "name": "Category 3",
+      "id": 4
+    },
+    {
+      "name": "Category 4",
+      "id": 5
+    },
+    {
+      "name": "Category 5",
+      "id": 6
     }
-  ]
+  ],
+  "users": []
 }

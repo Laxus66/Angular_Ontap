@@ -1,7 +1,9 @@
-<form (ngSubmit)="onHandleSubmit(categories.name)">
+<form (ngSubmit)="onHandleSubmit(categories.name)" novalidate>
     <div class="mb-3">
-        <label for="title">Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="categories.name" id="name" name="name" />
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="categories.name" id="name" name="name" required
+            [class.is-invalid]="isSubmitted && !isFormValid()">
+        <div class="invalid-feedback" *ngIf="isSubmitted && !isFormValid()">Name is required.</div>
     </div>
     <button class="btn btn-primary" type="submit">Update</button>
 </form>

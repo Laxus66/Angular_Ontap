@@ -21,7 +21,7 @@ export class CategoryListComponent {
   }
 
   removeItem(id: any, name: string) {
-    const confirm = window.confirm(`Bạn có muốn xóa sản phẩm ${name}`)
+    const confirm = window.confirm(`Bạn có muốn xóa danh mục ${name}`)
     if (confirm) {
       this.categoryService.deleteCategory(id).subscribe(() => {
         this.categories = this.categories.filter(C => C.id !== id);

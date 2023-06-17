@@ -1,18 +1,24 @@
-<form (ngSubmit)="onHandleSubmit(product.name)">
+<form (ngSubmit)="onHandleSubmit(product.name)" novalidate>
     <div class="mb-3">
-        <label for="title">Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="product.name" id="name" name="name" />
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="product.name" id="name" name="name" required
+            [class.is-invalid]="isSubmitted && !isFormValid('name')">
+        <div class="invalid-feedback" *ngIf="isSubmitted && !isFormValid('name')">Name is required.</div>
     </div>
     <div class="mb-3">
-        <label for="price">Price:</label>
-        <input type="number" class="form-control" [(ngModel)]="product.price" id="price" name="price" />
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" class="form-control" [(ngModel)]="product.price" id="price" name="price" required
+            [class.is-invalid]="isSubmitted && !isFormValid('price')">
+        <div class="invalid-feedback" *ngIf="isSubmitted && !isFormValid('price')">Price is required.</div>
     </div>
     <div class="mb-3">
-        <label for="category">Category:</label>
+        <label for="category" class="form-label">Category:</label>
         <select class="form-control" [(ngModel)]="product.cate_id" id="category" name="category"
-            [ngModelOptions]="{standalone: true}" (ngModelChange)="product.cate_id = $event">
+            [ngModelOptions]="{standalone: true}" (ngModelChange)="product.cate_id = $event" required
+            [class.is-invalid]="isSubmitted && !isFormValid('category')">
             <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.name }}</option>
         </select>
+        <div class="invalid-feedback" *ngIf="isSubmitted && !isFormValid('category')">Category is required.</div>
     </div>
     <button class="btn btn-success" type="submit">Add</button>
 </form>

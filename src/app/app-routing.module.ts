@@ -12,10 +12,12 @@ import { ProductAddComponent } from './pages/admin/product-add/product-add.compo
 import { CategoryListComponent } from './pages/admin/category-list/category-list.component';
 import { CategoryUpdateComponent } from './pages/admin/category-update/category-update.component';
 import { CategoryAddComponent } from './pages/admin/category-add/category-add.component';
+import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
+      { path: '', component: ProductPageComponent },
       { path: 'product', component: ProductPageComponent },
       { path: 'product/:id', component: ProductDetailPageComponent },
       { path: 'signin', component: SignInComponent },
@@ -31,7 +33,9 @@ const routes: Routes = [
       { path: 'category/:id/update', component: CategoryUpdateComponent },
       { path: 'category/add', component: CategoryAddComponent },
     ]
-  }
+  },
+  { path: '**', component: ErrorpageComponent }
+
 ];
 
 @NgModule({

@@ -16,6 +16,7 @@ import { CategoryListComponent } from './pages/admin/category-list/category-list
 import { CategoryAddComponent } from './pages/admin/category-add/category-add.component';
 import { CategoryUpdateComponent } from './pages/admin/category-update/category-update.component';
 import { FormsModule } from '@angular/forms';
+import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     ProductUpdateComponent,
     CategoryListComponent,
     CategoryAddComponent,
-    CategoryUpdateComponent
+    CategoryUpdateComponent,
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,

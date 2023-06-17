@@ -12,6 +12,7 @@ export class CategoryUpdateComponent {
   categories: ICategory = {
     name: ''
   };
+  isSubmitted = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +33,16 @@ export class CategoryUpdateComponent {
   }
 
   onHandleSubmit(name: string) {
-    this.categoryService.updateCategory(this.categories).subscribe(categories => {
-      console.log(categories);
-      window.alert(`Bạn đã cập nhật thành công sản phẩm ${name}`)
-      this.router.navigate(['/admin/category']);
-    })
+    this.isSubmitted = true;
+    if (this.isFormValid()) {
+      this.categoryService.updateCategory(this.categories).subscribe(categories => {
+        console.log(categories);
+        window.alert(`Bạn đã cập nhật thành công danh mục ${name}`)
+        this.router.navigate(['/admin/category']);
+      })
+    }
+  }
+  isFormValid(): boolean {
+    return this.categories.name.trim() !== '';
   }
 }

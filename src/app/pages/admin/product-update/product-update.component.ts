@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductUpdateComponent {
   product: any = ''
   categories: ICategory[] = [];
+  isSubmitted = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,21 +35,32 @@ export class ProductUpdateComponent {
     });
   }
 
-  // getCategoryName(categoryId: number): string {
-  //   const category = this.categories.find((c) => c.id === categoryId);
-  //   return category ? category.name : '';
-  // }
-
   getCategories() {
     this.categoryService.getAllcategory().subscribe((data) => {
       this.categories = data;
     });
   }
   onHandleSubmit(name: string) {
-    this.productService.updateProduct(this.product).subscribe(product => {
-      console.log(product);
-      window.alert(`Bạn đã cập nhật thành công sản phẩm ${name}`)
-      this.router.navigate(['/admin/product']);
-    })
+    this.isSubmitted = true;
+    if (this.isFormValid('name') && this.isFormValid('price') && this.isFormValid('category')) {
+      this.productService.updateProduct(this.product).subscribe(product => {
+        console.log(product);
+        window.alert(`Bạn đã cập nhật thành công sản phẩm ${name}`)
+        this.router.navigate(['/admin/product']);
+      })
+    }
+  }
+
+  isFormValid(field: string): boolean {
+    if (field === 'name') {
+      return this.product.name.trim() !== '';
+    } else if (field === 'price') {
+      const price = this.product.price;
+      return !isNaN(Number(price)) && Number(price) > 0;
+    } else if (field === 'category') {
+      const cateId = this.product.cate_id;
+      return !isNaN(Number(cateId)) && Number(cateId) > 0;
+    }
+    return false;
   }
 }
