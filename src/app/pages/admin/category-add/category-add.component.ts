@@ -20,19 +20,6 @@ export class CategoryAddComponent {
     private router: Router
   ) { }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const CateId = +params['id'];
-      this.getCategoryDetails(CateId);
-    });
-  }
-
-  getCategoryDetails(id: number) {
-    this.categoryService.getOnecategory(id).subscribe((data: any) => {
-      this.categories = data;
-    });
-  }
-
   onHandleSubmit(name: string) {
     this.isSubmitted = true;
     if (this.isFormValid()) {

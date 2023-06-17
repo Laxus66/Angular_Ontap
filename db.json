@@ -41,6 +41,18 @@
       "price": 324,
       "cate_id": 2,
       "id": 9
+    },
+    {
+      "name": "fsdf",
+      "price": 767,
+      "cate_id": 2,
+      "id": 10
+    },
+    {
+      "name": "test",
+      "price": 999,
+      "cate_id": 3,
+      "id": 11
     }
   ],
   "category": [

@@ -28,12 +28,6 @@ export class ProductAddComponent {
   ngOnInit() {
     this.getCategories();
   }
-  getProductDetails(id: number) {
-    this.productService.getOneProduct(id).subscribe((data: any) => {
-      this.product = data;
-      console.log(this.product);
-    });
-  }
 
   getCategories() {
     this.categoryService.getAllcategory().subscribe((data) => {
@@ -51,7 +45,6 @@ export class ProductAddComponent {
     }
   }
 
-
   isFormValid(field: string): boolean {
     if (field === 'name') {
       return this.product.name.trim() !== '';
@@ -64,7 +57,5 @@ export class ProductAddComponent {
     }
     return false;
   }
-
-
 
 }
