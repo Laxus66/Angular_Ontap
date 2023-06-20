@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/interfaces/category';
+import { IProduct } from 'src/app/interfaces/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,7 +11,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-update.component.css']
 })
 export class ProductUpdateComponent {
-  product: any = ''
+  product: IProduct = {
+    name: '',
+    price: 0,
+    cate_id: 0
+  }
   categories: ICategory[] = [];
   isSubmitted = false;
 
@@ -29,7 +34,7 @@ export class ProductUpdateComponent {
     this.getCategories();
   }
   getProductDetails(id: number) {
-    this.productService.getOneProduct(id).subscribe((data) => {
+    this.productService.getOneProduct(id).subscribe((data: any) => {
       this.product = data;
       console.log(this.product);
     });
